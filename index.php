@@ -92,7 +92,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     placeholder="Password">
 
             </div>
-            <button class="btn mt-3">Login</button>
+            <button id="submitLogin" class="btn mt-3">Login</button>
         </form>
     </div>
 </body>
