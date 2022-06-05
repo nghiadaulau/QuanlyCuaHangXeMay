@@ -6,9 +6,13 @@ $(document).on("click", "#btn-add", function(e) {
         url: "control/qlncc.php",
         success: function(dataResult) {
             var dataResult = JSON.parse(dataResult);
-            if (dataResult.statusCode == 200) {
+            if (dataResult.statusCode == 204) {
+                alert("Không được để trống");
+            } else if (dataResult.statusCode == 202) {
+                alert("Đã tồn tại nhà cung cấp này!");
+            } else if (dataResult.statusCode == 200) {
                 $("#addPro").modal("hide");
-                alert("Data added successfully !");
+                alert("Thêm nhà cung cấp thành công!");
                 location.reload();
             } else if (dataResult.statusCode == 201) {
                 alert(dataResult);
@@ -39,7 +43,7 @@ $(document).on("click", "#update", function(e) {
             var dataResult = JSON.parse(dataResult);
             if (dataResult.statusCode == 200) {
                 $("#editStaff").modal("hide");
-                alert("Data updated successfully !");
+                alert("Cập nhật thành công!");
                 location.reload();
             } else if (dataResult.statusCode == 201) {
                 alert(dataResult);

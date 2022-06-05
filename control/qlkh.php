@@ -9,7 +9,15 @@ if(count($_POST)>0){
 		$address=$_POST['address'];
         $email=$_POST['email'];
 		$sql = "INSERT INTO `khachhang`(`id`, `name`, `phone`, `address`, `email`)  VALUES ('$id', '$name', '$phone', '$address', '$email')";
-		if (mysqli_query($conn, $sql)) {
+		if($id == '' || $name == '' || $phone == '' || $address == '' || $email == ''){
+			echo json_encode(array("statusCode"=>204));
+		}else if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM khachhang WHERE id='{$id}'")) > 0){
+			echo json_encode(array("statusCode"=>202));
+		}else if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM khachhang WHERE phone='{$phone}'")) > 0){
+			echo json_encode(array("statusCode"=>202));
+		}else if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM khachhang WHERE email='{$email}'")) > 0){
+			echo json_encode(array("statusCode"=>202));
+		}else if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
 		else {
