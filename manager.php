@@ -6,6 +6,8 @@ if (isset($_SESSION['type'])) {
     if($_SESSION['type'] != 2){
         header("Location: index.php");
     }
+}else{
+    header("Location: index.php");
 }
 ?>
 
@@ -34,7 +36,13 @@ if (isset($_SESSION['type'])) {
         </div>
         <div class="text-center mt-4 name">
             Chào mừng manager đăng nhập thành công!
+            <br>
+            Mời bạn chọn chức năng cần dùng!
         </div>
+        <a href="quanlynhanvien.php"><button class="btn mt-3">Quản lý nhân viên</button></a>
+        <a href="quanlyxe.php"><button class="btn mt-3">Quản lý xe</button></a>
+        <a href="quanlynhacungcap.php"><button class="btn mt-3">Quản lý nhà cung cấp</button></a>
+        <a href="quanlykhachhang.php"><button class="btn mt-3">Quản lý khách hàng</button></a>
         <a href="logout.php"><button class="btn mt-3">Đăng xuất</button></a>
     </div>
 </body>

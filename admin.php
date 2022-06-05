@@ -6,6 +6,8 @@ if (isset($_SESSION['type'])) {
     if($_SESSION['type'] != 1){
         header("Location: index.php");
     }
+}else{
+    header("Location: index.php");
 }
 
 ?>
@@ -34,8 +36,11 @@ if (isset($_SESSION['type'])) {
             <img src="images/logo1.jpg" alt="">
         </div>
         <div class="text-center mt-4 name">
-            Chào mừng admin đăng nhập thành công!
+            Chào mừng manager đăng nhập thành công!
+            <br>
+            Mời bạn chọn chức năng cần dùng!
         </div>
+        <a href=""><button class="btn mt-3">Quản trị người dùng</button></a>
         <a href="logout.php"><button class="btn mt-3">Đăng xuất</button></a>
     </div>
 </body>
