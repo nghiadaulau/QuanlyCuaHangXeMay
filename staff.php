@@ -35,9 +35,10 @@ if (isset($_SESSION['type'])) {
         <div class="logo">
             <img src="images/logo1.jpg" alt="">
         </div>
+        <div id="success" class="text-center mt-4 name">
+            Welcome staff successfully logged in!
+        </div>
         <div class="text-center mt-4 name">
-            Chào mừng staff đăng nhập thành công!
-            <br>
             Mời bạn chọn chức năng cần dùng!
         </div>
         <a href="quanlykhachhang.php"><button class="btn mt-3">Quản lý nhân viên</button></a>
