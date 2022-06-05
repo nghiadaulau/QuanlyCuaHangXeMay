@@ -11,7 +11,11 @@ if(count($_POST)>0){
         $price=$_POST['price'];
 		$guaran=date('Y-m-d', strtotime($_POST['guaran']));
 		$sql = "INSERT INTO `xe`(`id`, `name`, `producer`, `color`, `amount`, `price`, `guaran`)  VALUES ('$id', '$name', '$producer', '$color', '$amount', '$price', '$guaran')";
-		if (mysqli_query($conn, $sql)) {
+		if($id == '' || $name == '' || $producer == '' || $color == '' || $amount == '' || $position == '' || $price == '' || $guaran == ''){
+			echo json_encode(array("statusCode"=>204));
+		}else if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM xe WHERE id='{$id}'")) > 0){
+			echo json_encode(array("statusCode"=>202));
+		}else if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
 		else {

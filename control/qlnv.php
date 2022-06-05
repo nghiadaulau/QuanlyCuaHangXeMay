@@ -12,7 +12,13 @@ if(count($_POST)>0){
         $salary=$_POST['salary'];
 		$address=$_POST['address'];
 		$sql = "INSERT INTO `nhanvien`(`id`, `name`, `birth`, `sex`, `phone`, `position`, `salary`, `address`)  VALUES ('$id', '$name', '$birth', '$sex', '$phone', '$position', '$salary', '$address')";
-		if (mysqli_query($conn, $sql)) {
+		if($id == '' || $name == '' || $birth == '' || $sex == '' || $phone == '' || $position == '' || $salary == '' || $address == ''){
+			echo json_encode(array("statusCode"=>204));
+		}else if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM nhanvien WHERE id='{$id}'")) > 0){
+			echo json_encode(array("statusCode"=>202));
+		}else if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM nhanvien WHERE phone='{$phone}'")) > 0){
+			echo json_encode(array("statusCode"=>202));
+		}else if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
 		else {
